@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b0b14;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container-principal {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+
+.lado-esquerdo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    background: radial-gradient(circle at center,#1a103c 0%, #0b0b18 70%);
+}
+
+.icone-box {
+    font-size: 30px;
+    background-color: #171730;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #2a2a50;
+}
+
+.lado-esquerdo h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.lado-esquerdo .subtitulo {
+    color: #a0a0c0;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.lado-esquerdo .descricao {
+    color: #606080;
+    font-size: 14px;
+}
+
+
+.lado-direito {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.card-login {
+    background-color: #121225;
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 380px;
+    border: 1px solid #232345;
+}
+
+.card-login h2 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.subtitulo-card {
+    font-size: 13px;
+    color: #8080a0;
+    margin-bottom: 25px;
+}
+
+
+.campo {
+    margin-bottom: 18px;
+}
+
+.campo label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: #cccccc;
+}
+
+.campo input {
+    width: 100%;
+    padding: 12px;
+    background-color: #0b0b14;
+    border: 1px solid #2a2a50;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+}
+
+.campo input:focus {
+    border-color: #6a5acd;
+}
+
+
+.campo-senha-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.btn-olho {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.link-esqueceu {
+    display: block;
+    text-align: right;
+    font-size: 12px;
+    color: #7a6bff;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.button3 {
+    width: 100%;
+    padding: 12px;
+    background-color: #5b4bf0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.rodape-card {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 12px;
+    color: #8080a0;
+}
+
+.button2 {
+    background: transparent;
+    border: none;
+    color: #7a6bff;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+
+.rodape-pagina {
+    text-align: center;
+    padding: 15px;
+    font-size: 11px;
+    color: #505070;
+}

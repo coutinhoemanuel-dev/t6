@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgendaTEC — Design System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0b0f1a;
+      --surface:     #131929;
+      --surface-2:   #1a2235;
+      --surface-3:   #1e2840;
+      --border:      rgba(255,255,255,0.07);
+      --border-2:    rgba(255,255,255,0.12);
+      --primary:     #6c63ff;
+      --primary-hover: #5a52e0;
+      --primary-dim: rgba(108,99,255,0.15);
+      --text:        #e8eaf0;
+      --text-muted:  #8890a4;
+      --text-faint:  #4a5568;
+      --green:       #22c55e;
+      --orange:      #f97316;
+      --red:         #ef4444;
+      --blue:        #3b82f6;
+      --radius-sm:   6px;
+      --radius:      10px;
+      --radius-lg:   14px;
+      --radius-xl:   18px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── Layout ── */
+    .page { max-width: 960px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 56px; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-2);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius-xl);
+      padding: 40px 40px 36px;
+      margin-bottom: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 100% 0%, rgba(108,99,255,.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--primary-dim);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 32px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .hero p { color: var(--text-muted); font-size: 14px; max-width: 480px; }
+    .hero-meta { display: flex; gap: 24px; margin-top: 24px; }
+    .hero-meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .hero-meta-item span:first-child { font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: .08em; }
+    .hero-meta-item span:last-child { font-size: 13px; font-weight: 600; color: var(--text); }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+    .card-label {
+      font-size: 11px;
+      color: var(--text-faint);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 8px;
+    }
+
+    /* ── Grid helpers ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+    .flex-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+    /* ── Colors ── */
+    .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+    .color-swatch {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .color-block { height: 64px; }
+    .color-info { background: var(--surface); padding: 10px 12px; }
+    .color-name { font-size: 12px; font-weight: 600; color: var(--text); }
+    .color-hex  { font-size: 11px; color: var(--text-muted); font-family: monospace; }
+    .color-role { font-size: 10px; color: var(--text-faint); margin-top: 2px; }
+
+    /* ── Typography ── */
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-meta { min-width: 160px; }
+    .type-meta-name  { font-size: 12px; font-weight: 600; color: var(--text); }
+    .type-meta-specs { font-size: 11px; color: var(--text-muted); font-family: monospace; margin-top: 2px; }
+    .type-sample { flex: 1; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      border: none;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-primary   { background: var(--primary); color: #fff; }
+    .btn-secondary { background: var(--surface-3); color: var(--text); border: 1px solid var(--border-2); }
+    .btn-ghost     { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+    .btn-danger    { background: rgba(239,68,68,.15); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
+    .btn-sm { padding: 5px 10px; font-size: 11px; border-radius: var(--radius-sm); }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 99px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .badge-livre    { background: rgba(34,197,94,.12);  color: var(--green);  }
+    .badge-ocupado  { background: rgba(249,115,22,.12); color: var(--orange); }
+    .badge-em-uso   { background: rgba(249,115,22,.12); color: var(--orange); }
+    .badge-info     { background: rgba(108,99,255,.12); color: var(--primary); }
+
+    /* ── Status dot ── */
+    .status-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px;
+      background: var(--surface-2);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Inputs ── */
+    .input {
+      width: 100%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius);
+      padding: 9px 14px;
+      font-size: 13px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      outline: none;
+    }
+    .input::placeholder { color: var(--text-faint); }
+    .input:focus { border-color: rgba(108,99,255,.6); }
+    .input-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .input-group { display: flex; flex-direction: column; gap: 4px; }
+
+    /* ── Resource chip ── */
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--surface-2);
+      border-radius: var(--radius);
+      font-size: 12px;
+      color: var(--text);
+    }
+    .chip-icon-ok  { color: var(--green); font-size: 14px; }
+    .chip-icon-no  { color: var(--red);   font-size: 14px; }
+
+    /* ── Nav bar demo ── */
+    .nav-demo {
+      background: #0d1120;
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius-lg);
+      padding: 0 20px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; margin-right: 16px; }
+    .nav-logo-box {
+      width: 34px; height: 34px;
+      background: var(--surface-3);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px;
+    }
+    .nav-logo-text p { font-size: 12px; font-weight: 700; color: #fff; line-height: 1.2; }
+    .nav-logo-text small { font-size: 9px; color: var(--text-muted); letter-spacing: .12em; }
+    .nav-items { display: flex; gap: 2px; flex: 1; }
+    .nav-item {
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+    .nav-item.active { background: var(--primary); color: #fff; font-weight: 600; }
+    .nav-right { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+    .nav-bell {
+      width: 34px; height: 34px;
+      background: var(--surface-3);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; font-size: 15px;
+    }
+    .nav-bell-dot {
+      position: absolute; top: 4px; right: 4px;
+      width: 8px; height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+    }
+    .nav-avatar {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface-3);
+      border-radius: var(--radius-sm);
+      padding: 5px 10px;
+    }
+    .avatar-circle {
+      width: 24px; height: 24px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; font-weight: 700; color: #fff;
+    }
+
+    /* ── Slot rows ── */
+    .slot-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 14px;
+      background: var(--surface-2);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin-bottom: 6px;
+    }
+    .slot-time { font-size: 12px; color: var(--text-muted); min-width: 110px; }
+    .slot-status { display: flex; align-items: center; gap: 6px; flex: 1; }
+    .slot-status-text { font-size: 12px; font-weight: 600; }
+    .slot-sub { font-size: 11px; color: var(--text-muted); }
+    .slot-action {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(108,99,255,.5);
+      color: #a09cf7;
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ── Calendar ── */
+    .cal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      max-width: 260px;
+    }
+    .cal-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .cal-header span { font-size: 13px; font-weight: 600; color: var(--text); }
+    .cal-arrow { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 16px; }
+    .cal-days { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; margin-bottom: 4px; }
+    .cal-day-name { text-align: center; font-size: 10px; color: var(--text-muted); padding: 4px 0; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
+    .cal-cell {
+      text-align: center; padding: 5px 0;
+      font-size: 12px; color: var(--text);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+    .cal-cell.today { border: 1px solid rgba(108,99,255,.4); color: #a09cf7; }
+    .cal-cell.selected { background: var(--primary); color: #fff; font-weight: 700; }
+    .cal-cell.muted { color: var(--text-faint); }
+
+    /* ── Spacing scale ── */
+    .spacing-row {
+      display: flex; align-items: center; gap: 16px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .spacing-row:last-child { border: none; }
+    .spacing-box { background: var(--primary-dim); border: 1px dashed rgba(108,99,255,.4); border-radius: 3px; height: 20px; }
+    .spacing-label { font-size: 12px; color: var(--text); min-width: 40px; }
+    .spacing-px { font-size: 11px; color: var(--text-muted); font-family: monospace; }
+
+    /* ── Border radius ── */
+    .radius-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+    .radius-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .radius-box { width: 60px; height: 60px; background: var(--primary-dim); border: 1px solid rgba(108,99,255,.4); }
+    .radius-name { font-size: 11px; color: var(--text-muted); text-align: center; }
+    .radius-val  { font-size: 10px; color: var(--text-faint); font-family: monospace; }
+
+    /* ── Notification ── */
+    .notif {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 14px;
+      background: var(--surface-2);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+    .notif-icon {
+      width: 32px; height: 32px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .notif-body { flex: 1; }
+    .notif-title { font-size: 13px; font-weight: 600; color: var(--text); }
+    .notif-desc  { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+    .notif-time  { font-size: 10px; color: var(--text-faint); margin-top: 4px; }
+    .notif-unread-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--primary); margin-top: 6px; flex-shrink: 0; }
+
+    /* ── Toggle ── */
+    .toggle-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .toggle {
+      width: 38px; height: 22px;
+      border-radius: 99px;
+      position: relative; cursor: pointer;
+    }
+    .toggle.on  { background: var(--green); }
+    .toggle.off { background: #2d3a52; }
+    .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: #fff;
+      transition: left .2s;
+    }
+    .toggle.on  .toggle-thumb { left: 19px; }
+    .toggle.off .toggle-thumb { left: 3px;  }
+    .toggle-label { font-size: 13px; color: var(--text); }
+    .toggle-sub   { font-size: 11px; color: var(--text-muted); }
+
+    /* ── Form card ── */
+    .form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+    .form-card h3 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .form-card h3 span { color: var(--primary); }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 72px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer p { font-size: 12px; color: var(--text-faint); }
+    footer .version {
+      font-size: 11px;
+      background: var(--primary-dim);
+      color: var(--primary);
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .hero { padding: 24px; }
+      .hero h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-tag">Design System</div>
+    <h1>AgendaTEC</h1>
+    <p>Guia visual do sistema de reserva de recursos. Cores, tipografia, componentes e padrões de interface usados no produto.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span>Versão</span>
+        <span>1.0.0</span>
+      </div>
+      <div class="hero-meta-item">
+        <span>Tema</span>
+        <span>Dark</span>
+      </div>
+      <div class="hero-meta-item">
+        <span>Fonte</span>
+        <span>Inter</span>
+      </div>
+      <div class="hero-meta-item">
+        <span>Paleta</span>
+        <span>Indigo / Dark Navy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORES -->
+  <div class="section">
+    <div class="section-title">Paleta de cores</div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-block" style="background:#0b0f1a"></div>
+        <div class="color-info">
+          <div class="color-name">Background</div>
+          <div class="color-hex">#0b0f1a</div>
+          <div class="color-role">Fundo principal</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#131929"></div>
+        <div class="color-info">
+          <div class="color-name">Surface</div>
+          <div class="color-hex">#131929</div>
+          <div class="color-role">Cards e painéis</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#1a2235"></div>
+        <div class="color-info">
+          <div class="color-name">Surface 2</div>
+          <div class="color-hex">#1a2235</div>
+          <div class="color-role">Inputs e chips</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#1e2840"></div>
+        <div class="color-info">
+          <div class="color-name">Surface 3</div>
+          <div class="color-hex">#1e2840</div>
+          <div class="color-role">Hover e controles</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#6c63ff"></div>
+        <div class="color-info">
+          <div class="color-name">Primary</div>
+          <div class="color-hex">#6c63ff</div>
+          <div class="color-role">Ações e destaques</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#5a52e0"></div>
+        <div class="color-info">
+          <div class="color-name">Primary Hover</div>
+          <div class="color-hex">#5a52e0</div>
+          <div class="color-role">Estado hover</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#e8eaf0"></div>
+        <div class="color-info">
+          <div class="color-name">Text</div>
+          <div class="color-hex">#e8eaf0</div>
+          <div class="color-role">Texto principal</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#8890a4"></div>
+        <div class="color-info">
+          <div class="color-name">Text Muted</div>
+          <div class="color-hex">#8890a4</div>
+          <div class="color-role">Labels e metadados</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#22c55e"></div>
+        <div class="color-info">
+          <div class="color-name">Green</div>
+          <div class="color-hex">#22c55e</div>
+          <div class="color-role">Disponível / Sucesso</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#f97316"></div>
+        <div class="color-info">
+          <div class="color-name">Orange</div>
+          <div class="color-hex">#f97316</div>
+          <div class="color-role">Ocupado / Alerta</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#ef4444"></div>
+        <div class="color-info">
+          <div class="color-name">Red</div>
+          <div class="color-hex">#ef4444</div>
+          <div class="color-role">Erro / Indisponível</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-block" style="background:#3b82f6"></div>
+        <div class="color-info">
+          <div class="color-name">Blue</div>
+          <div class="color-hex">#3b82f6</div>
+          <div class="color-role">Informação</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPOGRAFIA -->
+  <div class="section">
+    <div class="section-title">Tipografia — Inter</div>
+    <

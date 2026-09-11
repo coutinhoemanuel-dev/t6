@@ -1,0 +1,139 @@
+/*
+ * ╔══════════════════════════════════════════════════════════╗
+ * ║          AGENDATEC — PALETA COMPLETA DE CORES           ║
+ * ╚══════════════════════════════════════════════════════════╝
+ *
+ * Como usar:
+ *   color: var(--color-primary);
+ *   background: var(--color-bg);
+ *   border: 1px solid var(--color-border);
+ *
+ * Todas as cores extraídas de App.tsx, AuthPage.tsx e theme.css
+ */
+
+:root {
+
+  /* ── Backgrounds / Superfícies ─────────────────────────── */
+
+  --color-bg:               #0b0f1a;  /* fundo principal da página */
+  --color-topbar:           #0d1120;  /* fundo do header/topbar */
+  --color-surface:          #131929;  /* cards, modais, painéis */
+  --color-surface-2:        #1a2235;  /* inputs, chips, linhas de lista */
+  --color-surface-3:        #1e2840;  /* botões secundários, hover suave */
+  --color-surface-4:        #2a3555;  /* hover mais forte em surface-3 */
+  --color-surface-5:        #2d3a52;  /* toggle OFF, switch desativado */
+
+  /* ── Primária (Indigo / Roxo) ──────────────────────────── */
+
+  --color-primary:          #6c63ff;  /* ação principal, nav ativo, badges */
+  --color-primary-hover:    #5a52e0;  /* hover do botão primário */
+  --color-primary-light:    #a09cf7;  /* links, texto primário suave */
+  --color-primary-glow:     #6c63ff22; /* glow decorativo (baixa opacidade) */
+  --color-primary-dim:      rgba(108, 99, 255, 0.15); /* fundo de badges/icons primários */
+  --color-primary-dim-10:   rgba(108, 99, 255, 0.10); /* hover muito sutil */
+
+  /* ── Texto ─────────────────────────────────────────────── */
+
+  --color-text:             #e8eaf0;  /* texto principal */
+  --color-text-muted:       #8890a4;  /* labels, metadados, placeholders */
+  --color-text-faint:       #4a5568;  /* textos muito secundários, timestamps */
+  --color-white:            #ffffff;  /* títulos de destaque máximo */
+
+  /* ── Status: Disponível ────────────────────────────────── */
+
+  --color-green:            #22c55e;  /* Livre / Disponível / Sucesso */
+  --color-green-dim:        rgba(34, 197, 94, 0.12);  /* fundo de badge verde */
+  --color-green-border:     rgba(34, 197, 94, 0.30);  /* borda de badge verde */
+
+  /* ── Status: Alerta / Ocupado ──────────────────────────── */
+
+  --color-orange:           #f97316;  /* Ocupado / Em uso / Notificação */
+  --color-orange-dim:       rgba(249, 115, 22, 0.12); /* fundo de badge laranja */
+  --color-orange-border:    rgba(249, 115, 22, 0.30); /* borda de badge laranja */
+
+  /* ── Status: Erro / Indisponível ───────────────────────── */
+
+  --color-red:              #e53e3e;  /* Erro, Não, Indisponível (theme.css) */
+  --color-red-alt:          #ef4444;  /* variante Tailwind red-500 */
+  --color-red-dim:          rgba(239, 68, 68, 0.12);  /* fundo de badge vermelho */
+  --color-red-border:       rgba(239, 68, 68, 0.30);  /* borda de badge vermelho */
+
+  /* ── Status: Informação ────────────────────────────────── */
+
+  --color-blue:             #3b82f6;  /* informativo, notificações info */
+  --color-blue-dim:         rgba(59, 130, 246, 0.12); /* fundo de badge azul */
+
+  /* ── Extra ─────────────────────────────────────────────── */
+
+  --color-purple:           #a855f7;  /* gráfico / destaque extra */
+
+  /* ── Bordas ─────────────────────────────────────────────── */
+
+  --color-border:           rgba(255, 255, 255, 0.07);  /* borda padrão dos cards */
+  --color-border-strong:    rgba(255, 255, 255, 0.08);  /* borda um pouco mais visível */
+  --color-border-stronger:  rgba(255, 255, 255, 0.12);  /* borda de foco / destaque */
+
+  /* ── Raios de borda ─────────────────────────────────────── */
+
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   18px;
+  --radius-pill: 9999px;
+
+  /* ── Tipografia ─────────────────────────────────────────── */
+
+  --font-family:  'Inter', sans-serif;
+  --font-size-xs: 10px;
+  --font-size-sm: 11px;
+  --font-size-md: 12px;
+  --font-size-base: 13px;
+  --font-size-body: 14px;
+  --font-size-h3:   16px;
+  --font-size-h2:   22px;
+  --font-size-h1:   32px;
+
+  /* ── Sombras ────────────────────────────────────────────── */
+
+  --shadow-card:   0 4px 24px rgba(0, 0, 0, 0.40);
+  --shadow-modal:  0 8px 48px rgba(0, 0, 0, 0.50);
+  --shadow-glow:   0 0 60px rgba(108, 99, 255, 0.18);
+}
+
+/* ════════════════════════════════════════════════════════════
+   REFERÊNCIA VISUAL — Swatches (visualize colando num HTML)
+   ════════════════════════════════════════════════════════════
+
+   Backgrounds
+   ───────────
+   #0b0f1a  ██  --color-bg
+   #0d1120  ██  --color-topbar
+   #131929  ██  --color-surface
+   #1a2235  ██  --color-surface-2
+   #1e2840  ██  --color-surface-3
+   #2a3555  ██  --color-surface-4
+   #2d3a52  ██  --color-surface-5
+
+   Primária
+   ────────
+   #6c63ff  ██  --color-primary
+   #5a52e0  ██  --color-primary-hover
+   #a09cf7  ██  --color-primary-light
+
+   Texto
+   ─────
+   #e8eaf0  ██  --color-text
+   #8890a4  ██  --color-text-muted
+   #4a5568  ██  --color-text-faint
+   #ffffff  ██  --color-white
+
+   Status
+   ──────
+   #22c55e  ██  --color-green     (Livre / Disponível)
+   #f97316  ██  --color-orange    (Ocupado / Alerta)
+   #ef4444  ██  --color-red-alt   (Erro / Indisponível)
+   #3b82f6  ██  --color-blue      (Informação)
+   #a855f7  ██  --color-purple    (Extra)
+   #e53e3e  ██  --color-red       (Erro theme)
+
+════════════════════════════════════════════════════════════ */
